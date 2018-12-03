@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Order Type</th>
+      <th scope="col">Value</th>
+      <th scope="col">User</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <td><%= order.order_type %></td>
+      <td><%= order.value %></td>
+      <td><%= order.user.name || order.user.email %></td>
+      <td><%= order.status %></td>
+      <td><%= order.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
