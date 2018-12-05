@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :user, optional: true
   has_many :users
   has_many :orders
+  has_many :withdraws
   
   before_create :set_token
   

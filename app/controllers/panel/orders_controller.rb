@@ -1,7 +1,5 @@
 class Panel::OrdersController < ApplicationController
-	before_action :set_order, only: [:show, :edit, :update, :destroy]
-	before_action :status_verification
-	
+	before_action :set_order, only: [:destroy]
 	
 	def index
 		@orders = Order.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
@@ -9,12 +7,6 @@ class Panel::OrdersController < ApplicationController
 	
 	def new
 		@order = Order.new
-	end
-	
-	def edit
-	end
-	
-	def show
 	end
 	
 	def create
@@ -25,9 +17,6 @@ class Panel::OrdersController < ApplicationController
 		else
 			render :new
 		end
-	end
-	
-	def update
 	end
 	
 	def destroy
@@ -49,10 +38,6 @@ class Panel::OrdersController < ApplicationController
 	end
 	
 	private
-	
-	def status_verification
-		redirect_to edit_user_registration_path if current_user.blocked?
-	end
 	
 	def set_order
 		@order = Order.find(params[:id])

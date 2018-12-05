@@ -1,12 +1,9 @@
-class Order < ApplicationRecord
+class Withdraw < ApplicationRecord
   belongs_to :user
-  belongs_to :order, optional: true
-  has_many :orders, dependent: :destroy
   
   before_create :set_expiration_date
-
+  
   enum status: [:pending, :hold, :expired, :cancelled, :approved]
-  enum order_type: [:deposit, :system, :sponsor]
   
   private
   

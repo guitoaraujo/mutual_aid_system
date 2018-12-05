@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row justify-content-md-center mt-3">
+  <%= will_paginate @withdraws, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Value</th>
+    <th scope="col">Status</th>
+    <th scope="col">Created at</th>
+    <th scope="col">Cancel</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% @withdraws.each do |order| %>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <td><%= order.value %></td>
+      <td><%= order.status %></td>
+      <td><%= order.created_at %></td>
+      <td><%= link_to order.status, panel_order_path(order) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

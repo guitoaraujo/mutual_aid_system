@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181205162344) do
+ActiveRecord::Schema.define(version: 20181205175900) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "order_type"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20181205162344) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_users_on_user_id"
+  end
+
+  create_table "withdraws", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "value"
+    t.datetime "expires_in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_withdraws_on_user_id"
   end
 
 end
