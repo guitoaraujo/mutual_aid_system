@@ -5,12 +5,17 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.email_field :status, disabled: true %>
   </div>
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
   <div class="field">
@@ -20,7 +25,7 @@
 
   <div class="field">
     <%= f.label :cpf %><br />
-    <%= f.text_field :cpf, autocomplete: "cpf" %>
+    <%= f.text_field :cpf, disabled: true %>
   </div>
 
   <div class="field">
@@ -35,7 +40,7 @@
 
   <div class="field">
     <%= f.label :mibank %><br />
-    <%= f.text_field :mibank %>
+    <%= f.text_field :mibank, disabled: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

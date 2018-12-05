@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-6">
+    <h1>My Network</h1>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Mibank</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.mibank %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-6">
+    <h1>New User</h1>
+    <%= render 'form', user: @user %>
+  </div>
+</div>

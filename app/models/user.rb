@@ -10,7 +10,10 @@ class User < ApplicationRecord
   
   before_create :set_token
   
-  enum status: [:active, :inactive, :blocked]
+  validates :name, :cpf, :phone, :mibank, :email, :password, :password_confirmation, presence: true
+  validates :cpf, :email, :mibank, uniqueness: true
+  
+  enum status: [:inactive, :active, :blocked]
   
   def set_token
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)

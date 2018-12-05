@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row justify-content-md-center mt-3">
-  <%= will_paginate @orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  <%= will_paginate orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
 
 <table class="table table-hover">
@@ -14,24 +12,27 @@
     <th scope="col">Created at</th>
     <th scope="col">Mibank Transaction</th>
     <th scope="col">Validate</th>
-    <th scope="col">Cancel</th>
-
+    <% if controller.controller_name == 'orders' %>
+      <th scope="col">Cancel</th>
+    <% end %>
   </tr>
   </thead>
   <tbody>
-  <% @orders.each do |order| %>
+  <% orders.each do |order| %>
     <tr>
       <th scope="row"><%= order.id %></th>
       <td><%= order.order_type %></td>
       <td><%= order.value %></td>
-      <td><%= order.status %></td>
+      <td><%= link_to order.status, panel_order_path(order) %></td>
       <td><%= order.created_at %></td>
       <td><%= order.mibank_transaction || 'waiting validation' %></td>
-      <td><%= render('shared/validate_order_form', order_id: order.id) if order.pending?  %></td>
-      <td><%= link_to order.status, panel_order_path(order) %></td>
+      <% if controller.controller_name == 'orders' %>
+        <td><%= render 'shared/validate_order_form' if order.pending?  %></td>
+        <td><%= link_to order.status, panel_order_path(order) %></td>
+      <% else %>
+        <td><%= controller.controller_name  %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-

@@ -7,6 +7,6 @@ class AddFieldsToUser < ActiveRecord::Migration[5.1]
     add_column :users, :zipcode, :string
     add_column :users, :mibank, :string
     add_column :users, :admin, :boolean, default: false
-    add_column :users, :status, :integer
+    add_column :users, :status, :integer, default: 0
   end
 end

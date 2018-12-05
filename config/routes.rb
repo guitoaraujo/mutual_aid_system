@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :panel do
     get 'welcome/index'
     resources :orders
+    resources :users, only: [:index, :create]
+	  post 'validation', to: 'orders#validate_order', as: 'validation'
   end
 
   get 'welcome/index'

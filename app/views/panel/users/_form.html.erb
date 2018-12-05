@@ -1,0 +1,65 @@
+<%= form_with(model: [:panel, user], local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(testis.errors.count, "error") %> prohibited this testis from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %><br />
+    <%= form.number_field :phone, autocomplete: "phone" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %><br />
+    <%= form.text_field :cpf, autocomplete: "cpf" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %><br />
+    <%= form.text_field :country, autocomplete: "country" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %><br />
+    <%= form.text_field :zipcode, autocomplete: "zipcode" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mibank %><br />
+    <%= form.text_field :mibank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
