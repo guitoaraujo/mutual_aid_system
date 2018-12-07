@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def status_verification
-    redirect_to root_path if current_user.blocked?
+    if user_signed_in?
+      redirect_to root_path if current_user.blocked?
+    end
   end
 end
