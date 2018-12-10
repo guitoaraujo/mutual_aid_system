@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :order, optional: true
   has_many :orders, dependent: :destroy
+  has_many :orders_withdraw
+  has_many :withdraws, through: :orders_withdraws, dependent: :destroy
   
   before_create :set_expiration_date
 

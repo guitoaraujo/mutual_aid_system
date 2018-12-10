@@ -12,7 +12,7 @@ class Panel::OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		if @order.save
-			OrdersConfig.new(@order).call if @order.deposit?
+			OrdersConfig.new(@order).call
 			redirect_to panel_orders_path
 		else
 			render :new
@@ -44,6 +44,6 @@ class Panel::OrdersController < ApplicationController
 	end
 	
 	def order_params
-		params.require(:order).permit(:order_type, :value).merge(user: current_user, status: :pending)
+		params.require(:order).permit(:value).merge(user: current_user, order_type: :deposit, status: :pending)
 	end
 end

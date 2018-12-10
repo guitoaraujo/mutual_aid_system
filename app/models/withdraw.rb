@@ -1,5 +1,7 @@
 class Withdraw < ApplicationRecord
   belongs_to :user
+  has_many :orders_withdraw
+  has_many :orders, through: :orders_withdraws, dependent: :destroy
   
   before_create :set_expiration_date
   
