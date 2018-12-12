@@ -1,6 +1,5 @@
 task :teste => :environment do
 	
-		
-		puts '========================'
+	Teste.create
 	
 end
