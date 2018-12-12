@@ -1,3 +1,6 @@
 task :teste do
-	puts 'oioioioioioioioioioiioio'
+	if Teste.all.count < 3
+		
+		Teste.create
+	end
 end
