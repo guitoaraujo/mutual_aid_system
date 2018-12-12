@@ -1,6 +1,6 @@
-task :teste do
-	if Teste.all.count < 3
+task :teste => :environment do
+	
 		
-		Teste.create
-	end
+		puts '========================'
+	
 end
