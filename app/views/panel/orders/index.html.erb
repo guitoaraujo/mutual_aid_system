@@ -1,5 +1,5 @@
 <% if notice %>
-  <p class="alert alert-primay mt-3" id="notice"><%= notice %></p>
+  <p class="alert alert-primary mt-3" id="notice"><%= notice %></p>
 <% end %>
 
 <div class="row justify-content-md-center mt-3">
@@ -15,6 +15,7 @@
     <th scope="col">Status</th>
     <th scope="col">Created at</th>
     <th scope="col">Mibank Transaction</th>
+    <th scope="col">Mibank Favoured</th>
     <th scope="col">Validate</th>
     <th scope="col">Cancel</th>
 
@@ -29,8 +30,17 @@
       <td><%= order.status %></td>
       <td><%= order.created_at %></td>
       <td><%= order.mibank_transaction || 'waiting validation' %></td>
+      <% if order.withdraws.any? %>
+        <td><%= order.withdraws.first.user.mibank %></td>
+      <% else %>
+        <td>waiting favoured</td>
+      <% end %>
       <td><%= render('shared/validate_order_form', order_id: order.id) if order.pending?  %></td>
-      <td><%= link_to order.status, panel_order_path(order), method: :delete %></td>
+      <td>
+        <% if order.deposit? %>
+          <%= link_to 'Cancel', panel_order_path(order), method: :delete, data: { confirm: 'Tem certeza que deseja cancelar esta ordem?' } %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>

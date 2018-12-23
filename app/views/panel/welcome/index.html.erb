@@ -29,3 +29,13 @@
   <%# end %>
 <!--  </tbody>-->
 <!--</table>-->
+
+<div id="getting-started"></div>fdfdfdfd
+<script type="text/javascript">
+    $("#getting-started")
+        .countdown("01/01/2030", function(event) {
+            $(this).text(
+                event.strftime('%D days %H:%M:%S')
+            );
+        });
+</script>
