@@ -10,6 +10,6 @@ class Withdraw < ApplicationRecord
   private
   
   def set_expiration_date
-    self.expires_in = Time.now + 2.days
+    self.expires_in = Time.now + 1.day
   end
 end

@@ -32,7 +32,7 @@ class Panel::OrdersController < ApplicationController
 			render :index, notice: 'Esta ordem não está mais pendente.'
 		else
 			if OrdersValidation.new(mibank_transaction, params[:order_id]).call
-				current_user.update_attribute(wallet: current.user.wallet + order.value)
+				#current_user.update_attribute(wallet: current.user.wallet + order.value)
 				redirect_to panel_orders_path, notice: 'Order was approved!'
 			else
 				redirect_to panel_orders_path, notice: 'Error, check the data before send.'

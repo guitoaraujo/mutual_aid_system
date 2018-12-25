@@ -5,7 +5,11 @@
 
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.text_field :user, value: resource.user.name, disabled: true %>
+    <% if resource.user %>
+      <%= f.text_field :user, value: resource.user.name, disabled: true %>
+    <% else %>
+      <%= f.text_field :user, disabled: true %>
+    <% end %>
   </div>
 
   <div class="field">

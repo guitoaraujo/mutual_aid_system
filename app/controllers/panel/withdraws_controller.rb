@@ -1,5 +1,6 @@
 class Panel::WithdrawsController < ApplicationController
 	before_action :set_withdraw, only: [:destroy]
+	before_action :can_withdraw?
 	
 	def index
 		@withdraws = Withdraw.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
@@ -30,5 +31,11 @@ class Panel::WithdrawsController < ApplicationController
 	
 	def withdraws_params
 		params.require(:withdraw).permit(:value).merge(user: current_user, status: :pending)
+	end
+	
+	def can_withdraw?
+		if current_user.wallet < 30
+			redirect_to panel_orders_path, notice: 'You can not withdraw yet.'
+		end
 	end
 end
