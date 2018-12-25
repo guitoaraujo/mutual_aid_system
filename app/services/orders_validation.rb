@@ -7,7 +7,7 @@ class OrdersValidation
 	end
 	
 	def call
-		if key_exists?
+		if transaction_exists?
 			return false
 		else
 			see_transaction
@@ -16,14 +16,14 @@ class OrdersValidation
 	
 	private
 	
-	def key_exists?
+	def transaction_exists?
 		Order.all.map(&:mibank_transaction).include?(@mibank_transaction)
 	end
 	
 	def see_transaction
 		response = HTTParty.get("https://api.mibank.solutions/api/conta/transacao?chave_api=#{@key}&transacao=#{@mibank_transaction}")
 		
-		if response['valor'] == @order.value
+		if response['valor'] == @order.value && response['tipo'] == 'debito'
 			@order.approved!
 			@order.mibank_transaction = @mibank_transaction
 			@order.save

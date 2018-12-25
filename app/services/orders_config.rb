@@ -5,6 +5,13 @@ class OrdersConfig
 	end
 	
 	def call
+		Cicle.create(
+			phase: 1,
+			status: :active,
+			order: @order,
+			user: @order.user
+		)
+		
 		Order.create(
 			order_type: :system,
 			value: calc(@order.value),

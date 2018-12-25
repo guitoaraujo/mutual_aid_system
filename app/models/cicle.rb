@@ -1,6 +1,12 @@
 class Cicle < ApplicationRecord
+  belongs_to :order
   belongs_to :user
-  has_many :orders
+  
+  before_create :set_complete_date
 
-  enum status: [:phase1, :phase2, :phase3, :phase4, :phase5, :hold, :canceled, :finished]
+  enum status: [:active, :hold, :cancelled, :finished]
+  
+  def set_complete_date
+    self.complete_date = Time.now + 7.days
+  end
 end

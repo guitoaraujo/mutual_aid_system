@@ -8,6 +8,6 @@ task :find_orders => :environment do
 
 end
 
-task :abc => :environment do
-	Teste.create
-end
+# task :abc => :environment do
+# 	Teste.create
+# end

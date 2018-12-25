@@ -1,41 +1,48 @@
-<!--<div class="row justify-content-md-center mt-3">-->
-  <%#= will_paginate @orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-<!--</div>-->
+<div class="row justify-content-md-center mt-3">
+  <%= will_paginate @cicles, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
-<!--<table class="table table-hover">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th scope="col">#</th>-->
-<!--    <th scope="col">Order Type</th>-->
-<!--    <th scope="col">Value</th>-->
-<!--    <th scope="col">Status</th>-->
-<!--    <th scope="col">Created at</th>-->
-<!--    <th scope="col">Mibank Transaction</th>-->
-<!--    <th scope="col">Donate</th>-->
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Cicle</th>
+    <th scope="col">Value</th>
+    <th scope="col">Status</th>
+    <th scope="col">Created at</th>
+    <th scope="col">Time to Complete</th>
 
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-  <%# @orders.each do |order| %>
-<!--    <tr>-->
-<!--      <th scope="row"><%#= order.id %></th>-->
-<!--      <td><%#= order.order_type %></td>-->
-<!--      <td><%#= order.value %></td>-->
-<!--      <td><%#= link_to order.status, panel_order_path(order) %></td>-->
-<!--      <td><%#= order.created_at %></td>-->
-<!--      <td><%#= order.mibank_transaction || 'waiting validation' %></td>-->
-<!--      <td><%#= link_to   %></td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
+  </tr>
+  </thead>
+  <tbody>
+  <% @cicles.each do |cicle| %>
+    <tr>
+      <th scope="row"><%= cicle.id %></th>
+      <th scope="row"><%= cicle.phase %></th>
+      <td><%= cicle.order.value %></td>
+      <td><%= cicle.status %></td>
+      <td><%= cicle.created_at %></td>
+      <td class="getting-started<%= cicle.id %>" >
+        <script>
+            $(".getting-started<%= cicle.id %>").countdown("<%= cicle.complete_date.strftime('%d/%m/%Y %H:%M:%S') %>", function(e){
+                $(this).text(
+                    e.strftime('%D days %H:%M:%S')
+                );
+            });
+        </script>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<div id="getting-started"></div>fdfdfdfd
-<script type="text/javascript">
-    $("#getting-started")
-        .countdown("01/01/2030", function(event) {
-            $(this).text(
-                event.strftime('%D days %H:%M:%S')
-            );
-        });
-</script>
+<!--<div id="getting-started"></div>fdfdfdfd-->
+<!--<script type="text/javascript">-->
+
+<!--    $("#getting-started")-->
+<!--        .countdown("01/01/2030", function(event) {-->
+<!--            $(this).text(-->
+<!--                event.strftime('%D days %H:%M:%S')-->
+<!--            );-->
+<!--        });-->
+<!--</script>-->

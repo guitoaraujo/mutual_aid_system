@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  phase: MyString
-  status: MyString
+  order: one
+  phase: 1
+  status: 1
+  complete_date: 2018-12-25 14:50:35
 
 two:
-  user: two
-  phase: MyString
-  status: MyString
+  order: two
+  phase: 1
+  status: 1
+  complete_date: 2018-12-25 14:50:35

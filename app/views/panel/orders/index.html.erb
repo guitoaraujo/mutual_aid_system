@@ -35,7 +35,7 @@
       <% else %>
         <td>waiting favoured</td>
       <% end %>
-      <td><%= render('shared/validate_order_form', order_id: order.id) if order.pending?  %></td>
+      <td><%= render('shared/validate_order_form', order_id: order.id, favoured: order.withdraws.first) if order.pending?  %></td>
       <td>
         <% if order.deposit? %>
           <%= link_to 'Cancel', panel_order_path(order), method: :delete, data: { confirm: 'Tem certeza que deseja cancelar esta ordem?' } %>

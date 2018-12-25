@@ -4,13 +4,18 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user, value: resource.user.name, disabled: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, disabled: true %>
   </div>
 
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.email_field :status, disabled: true %>
+    <%= f.text_field :status, disabled: true %>
   </div>
 
   <div class="field">

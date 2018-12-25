@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181217124933) do
+ActiveRecord::Schema.define(version: 20181225165816) do
 
   create_table "cicles", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "phase"
-    t.string "status"
+    t.integer "order_id"
+    t.integer "phase", default: 1
+    t.integer "status"
+    t.datetime "complete_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["order_id"], name: "index_cicles_on_order_id"
     t.index ["user_id"], name: "index_cicles_on_user_id"
   end
 
