@@ -1,87 +1,98 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="shadow-lg justify-content-md-center offset-4 col-4 mt-3">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <% if resource.user %>
-      <%= f.text_field :user, value: resource.user.name, disabled: true %>
-    <% else %>
-      <%= f.text_field :user, disabled: true %>
+    <div class="form-group">
+      <%= f.label 'Patrocinador' %><br />
+      <% if resource.user %>
+        <%= f.text_field :user, value: resource.user.name, disabled: true, class: 'form-control' %>
+      <% else %>
+        <%= f.text_field :user, disabled: true, class: 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, disabled: true, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= f.label 'Status' %><br />
+          <%= f.text_field :status, disabled: true, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Nome' %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <%= f.label 'Telefone' %><br />
+          <%= f.text_field :phone, autocomplete: "phone", class: 'form-control', 'data-mask': '(99) 99999-9999' %>
+        </div>
+
+        <div class="col">
+          <%= f.label 'CPF' %><br />
+          <%= f.text_field :cpf, autocomplete: "cpf", disable: true, class: 'form-control', 'data-mask': '999.999.999.-99' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <%= f.label 'País' %><br />
+          <%= f.country_select :country, {}, class: 'form-control' %>
+        </div>
+
+        <div class="col">
+          <%= f.label 'CEP' %><br />
+          <%= f.text_field :zipcode, autocomplete: "zipcode", class: 'form-control', 'data-mask': '99999-999' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Conta MiBank' %><br />
+      <%= f.text_field :mibank, disabled: true, class: 'form-control' %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, disabled: true %>
-  </div>
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <%= f.label :password %> <br />
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "mínimo de #{@minimum_password_length} caractéres", class: 'form-control' %>
+          <small>Deixe em branco se não quiser mudar</small>
+          <% if @minimum_password_length %>
+            <br />
+          <% end %>
+        </div>
+        <div class="col">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status, disabled: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :current_password %> <br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+      <small>Confirme sua senha atual para validação</small>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.number_field :phone, autocomplete: "phone" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf, disabled: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country, autocomplete: "country" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode, autocomplete: "zipcode" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mibank %><br />
-    <%= f.text_field :mibank, disabled: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="actions">
+      <%= f.submit "Atualizar", class: 'btn btn-primary mb-3' %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

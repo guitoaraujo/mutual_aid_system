@@ -34,10 +34,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'rails_admin', '~> 1.3'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 gem 'httparty'
+gem 'country_select'
+gem 'i18n'
 # gem 'whenever', require: false
 
 group :development, :test do

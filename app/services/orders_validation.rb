@@ -27,8 +27,19 @@ class OrdersValidation
 			@order.approved!
 			@order.mibank_transaction = @mibank_transaction
 			@order.save
+			
+			see_withdraws
 		else
 			false
+		end
+	end
+	
+	def see_withdraws
+		@order.withdraws.each do |withdraw|
+			withdraw.approved!
+			user = withdraw.user
+			user.wallet += user.wallet + withdraw.value
+			user.save
 		end
 	end
 end

@@ -10,8 +10,8 @@ class Order < ApplicationRecord
   
   before_create :set_expiration_date
 
-  enum status: [:pending, :hold, :expired, :cancelled, :approved]
-  enum order_type: [:deposit, :system, :sponsor]
+  enum status: [ :pending, :approved, :hold, :cancelled, :expired ]
+  enum order_type: [ :deposit, :system, :sponsor ]
   
   private
   

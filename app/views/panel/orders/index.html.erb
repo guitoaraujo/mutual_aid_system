@@ -10,14 +10,14 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Order Type</th>
-    <th scope="col">Value</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Valor</th>
     <th scope="col">Status</th>
-    <th scope="col">Created at</th>
-    <th scope="col">Mibank Transaction</th>
-    <th scope="col">Mibank Favoured</th>
-    <th scope="col">Validate</th>
-    <th scope="col">Cancel</th>
+    <th scope="col">Criado em</th>
+    <th scope="col">Mibank Transação</th>
+    <th scope="col">Mibank Favorecido</th>
+    <th scope="col">Validação</th>
+    <th scope="col">Cancelar</th>
 
   </tr>
   </thead>
@@ -27,9 +27,9 @@
       <th scope="row"><%= order.id %></th>
       <td><%= order.order_type %></td>
       <td><%= order.value %></td>
-      <td><%= order.status %></td>
+      <td><strong><%= order.status %></strong></td>
       <td><%= order.created_at %></td>
-      <td><%= order.mibank_transaction || 'waiting validation' %></td>
+      <td><%= order.mibank_transaction || 'aguardando validação' %></td>
       <% if order.withdraws.any? %>
         <td><%= order.withdraws.first.user.mibank %></td>
       <% else %>
@@ -38,7 +38,7 @@
       <td><%= render('shared/validate_order_form', order_id: order.id, favoured: order.withdraws.first) if order.pending?  %></td>
       <td>
         <% if order.deposit? %>
-          <%= link_to 'Cancel', panel_order_path(order), method: :delete, data: { confirm: 'Tem certeza que deseja cancelar esta ordem?' } %>
+          <%= link_to '<i class="material-icons">backspace</i>'.html_safe, panel_order_path(order), method: :delete, data: { confirm: 'Tem certeza que deseja cancelar este pagamento?' } %>
         <% end %>
       </td>
     </tr>

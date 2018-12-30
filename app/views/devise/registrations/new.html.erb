@@ -1,64 +1,70 @@
-<h2>Sign up</h2>
-
+<div class="shadow-lg justify-content-md-center offset-4 col-4 mt-3">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.select :user, User.all.map { |user| ["#{user.name} | #{user.mibank }", user.id] }%>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "name" %>
+  <div class="form-group">
+    <%= f.label 'Nome' %><br />
+    <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.number_field :phone, autocomplete: "phone" %>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= f.label 'Telefone' %><br />
+        <%= f.text_field :phone, autocomplete: "phone", class: 'form-control', 'data-mask': '(99) 99999-9999' %>
+      </div>
+
+      <div class="col">
+        <%= f.label 'CPF' %><br />
+        <%= f.text_field :cpf, autocomplete: "cpf", class: 'form-control', 'data-mask': '999.999.999.-99' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf, autocomplete: "cpf" %>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= f.label 'País' %><br />
+        <%= f.country_select :country, {}, class: 'form-control' %>
+      </div>
+
+      <div class="col">
+        <%= f.label 'CEP' %><br />
+        <%= f.text_field :zipcode, autocomplete: "zipcode", class: 'form-control', 'data-mask': '99999-999' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country, autocomplete: "country" %>
+  <div class="form-group">
+    <%= f.label 'Conta MiBank' %><br />
+    <%= f.text_field :mibank, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode, autocomplete: "zipcode" %>
-  </div>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(mínimo de <%= @minimum_password_length %> caractéres)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :mibank %><br />
-    <%= f.text_field :mibank %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="col">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit class: 'btn btn-primary mb-3' %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+<%#= render "devise/shared/links" %>

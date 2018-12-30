@@ -1,5 +1,6 @@
 class Panel::OrdersController < ApplicationController
 	before_action :set_order, only: [:destroy]
+	before_action :cicles_limit, only: [:new, :create]
 	
 	def index
 		@orders = Order.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
@@ -44,6 +45,11 @@ class Panel::OrdersController < ApplicationController
 	
 	def set_order
 		@order = Order.find(params[:id])
+	end
+	
+	def cicles_limit
+		cicles = current_user.cicles.where(status: :active).count
+		redirect_to panel_orders_path, notice: 'You cannot have more than 5 cicles at same time.' if cicles >= 1
 	end
 	
 	def order_params

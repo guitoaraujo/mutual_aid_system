@@ -12,4 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery-mask-plugin/dist/jquery.mask
 //= require_tree .
+
+
+$.jMaskGlobals.watchDataMask = true;

@@ -11,55 +11,67 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %><br />
-    <%= form.text_field :name, autocomplete: "name" %>
+  <div class="form-group">
+    <%= form.label 'Nome' %><br />
+    <%= form.text_field :name, autocomplete: "name", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %><br />
-    <%= form.number_field :phone, autocomplete: "phone" %>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= form.label 'Telefone' %><br />
+        <%= form.text_field :phone, autocomplete: "phone", class: 'form-control', 'data-mask': '(99) 99999-9999' %>
+      </div>
+
+      <div class="col">
+        <%= form.label 'CPF' %><br />
+        <%= form.text_field :cpf, autocomplete: "cpf", class: 'form-control', 'data-mask': '999.999.999.-99' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :cpf %><br />
-    <%= form.text_field :cpf, autocomplete: "cpf" %>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= form.label 'País' %><br />
+        <%= form.country_select :country, {}, class: 'form-control' %>
+      </div>
+
+      <div class="col">
+        <%= form.label 'CEP' %><br />
+        <%= form.text_field :zipcode, autocomplete: "zipcode", class: 'form-control', 'data-mask': '99999-999' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :country %><br />
-    <%= form.text_field :country, autocomplete: "country" %>
+  <div class="form-group">
+    <%= form.label 'Conta MiBank' %><br />
+    <%= form.text_field :mibank, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :zipcode %><br />
-    <%= form.text_field :zipcode, autocomplete: "zipcode" %>
-  </div>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col">
+        <%= form.label :password %>
+        <% if @minimum_password_length %>
+          <em>(mínimo de <%= @minimum_password_length %> caractéres)</em>
+        <% end %><br />
+        <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :mibank %><br />
-    <%= form.text_field :mibank %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="col">
+        <%= form.label :password_confirmation %><br />
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Cadastrar', class: 'btn btn-primary mb-3' %>
   </div>
 <% end %>

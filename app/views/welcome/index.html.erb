@@ -3,13 +3,14 @@
 <% end %>
 
 <div class="jumbotron mt-3 shadow-lg">
-  <h1 class="display-4">Mutual Aid System</h1>
+  <h1 class="display-4">Sistema de Ajuda Mútua</h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <% if !user_signed_in? %>
-    <%= link_to 'Login', new_user_session_path, class: 'btn btn-lg btn-success my-2 my-sm-0' %>
+    <%= link_to 'Entrar', new_user_session_path, class: 'btn btn-lg btn-primary my-2 my-sm-0' %>
+    <%= link_to 'Cadastro', new_user_registration_path, class: 'btn btn-lg btn-primary my-2 my-sm-0' %>
   <% else %>
-    <%= link_to 'Wallet', panel_welcome_index_path, class: 'btn btn-lg btn-success my-2 my-sm-0' %>
+    <%= link_to 'Ciclos', panel_welcome_index_path, class: 'btn btn-lg btn-primary my-2 my-sm-0' %>
   <% end %>
 </div>

@@ -6,12 +6,13 @@ class User < ApplicationRecord
   
   belongs_to :user, optional: true
   has_many :users
+  has_many :cicles
   has_many :orders
   has_many :withdraws
   
   before_create :set_token
   
-  validates :name, :cpf, :phone, :mibank, :email, presence: true
+  validates :name, :cpf, :phone, :mibank, :email, :password, :password_confirmation, presence: true
   validates :cpf, :email, :mibank, uniqueness: true
   
   enum status: [:inactive, :active, :blocked]
