@@ -8,10 +8,10 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Value</th>
+    <th scope="col">Valor</th>
     <th scope="col">Status</th>
-    <th scope="col">Created at</th>
-    <th scope="col">Cancel</th>
+    <th scope="col">Criado em</th>
+    <th scope="col">Cancelar</th>
 
   </tr>
   </thead>
@@ -22,7 +22,7 @@
       <td><%= order.value %></td>
       <td><%= order.status %></td>
       <td><%= order.created_at %></td>
-      <td><%= link_to order.status, panel_order_path(order) %></td>
+      <td><%= link_to '<i class="material-icons">backspace</i>', order.status, panel_order_path(order) %></td>
     </tr>
   <% end %>
   </tbody>

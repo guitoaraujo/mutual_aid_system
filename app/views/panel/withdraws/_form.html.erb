@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :value %>
+    <%= form.label 'Valor' %>
     <%= form.number_field :value, id: :order_value, class: 'form-control col-3' %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit 'Gerar Pedido', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   
   before_create :set_token
   
-  validates :name, :cpf, :phone, :mibank, :email, :password, :password_confirmation, presence: true
+  validates :name, :cpf, :phone, :mibank, :email, presence: true
   validates :cpf, :email, :mibank, uniqueness: true
   
   enum status: [:inactive, :active, :blocked]

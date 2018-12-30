@@ -22,7 +22,7 @@ class Panel::OrdersController < ApplicationController
 	
 	def destroy
 		@order.destroy
-		redirect_to panel_orders_path, notice: 'Order was successfully destroyed.'
+		redirect_to panel_orders_path, notice: 'Pagamento cancelado!'
 	end
 	
 	def validate_order
@@ -34,9 +34,9 @@ class Panel::OrdersController < ApplicationController
 		else
 			if OrdersValidation.new(mibank_transaction, params[:order_id]).call
 				#current_user.update_attribute(wallet: current.user.wallet + order.value)
-				redirect_to panel_orders_path, notice: 'Order was approved!'
+				redirect_to panel_orders_path, notice: 'Pagamento aprovado!'
 			else
-				redirect_to panel_orders_path, notice: 'Error, check the data before send.'
+				redirect_to panel_orders_path, notice: 'Erro. Verifique os dados antes de enviar.'
 			end
 		end
 	end
@@ -49,7 +49,7 @@ class Panel::OrdersController < ApplicationController
 	
 	def cicles_limit
 		cicles = current_user.cicles.where(status: :active).count
-		redirect_to panel_orders_path, notice: 'You cannot have more than 5 cicles at same time.' if cicles >= 1
+		redirect_to panel_orders_path, notice: 'Erro. Você não pode ter mais de 5 ciclos ativos ao mesmo tempo.' if cicles >= 5
 	end
 	
 	def order_params

@@ -27,8 +27,8 @@
       <th scope="row"><%= order.id %></th>
       <td><%= order.order_type %></td>
       <td><%= order.value %></td>
-      <td><strong><%= order.status %></strong></td>
-      <td><%= order.created_at %></td>
+      <td><strong><%= set_status(order.status) %></strong></td>
+      <td><%= order.created_at.strftime('%d/%m/%Y %H:%M:%S') %></td>
       <td><%= order.mibank_transaction || 'aguardando validação' %></td>
       <% if order.withdraws.any? %>
         <td><%= order.withdraws.first.user.mibank %></td>

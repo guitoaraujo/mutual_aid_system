@@ -35,7 +35,7 @@ class Panel::WithdrawsController < ApplicationController
 	
 	def can_withdraw?
 		if current_user.wallet < 50
-			redirect_to panel_orders_path, notice: 'You can not withdraw yet.'
+			redirect_to panel_orders_path, notice: 'Você ainda não pode pedir ajuda.'
 		end
 	end
 end

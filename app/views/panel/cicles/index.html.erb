@@ -7,10 +7,11 @@
   <tr>
     <th scope="col">#</th>
     <th scope="col">Cicle</th>
-    <th scope="col">Value</th>
+    <th scope="col">Valor</th>
     <th scope="col">Status</th>
-    <th scope="col">Created at</th>
-    <th scope="col">Time to Complete</th>
+    <th scope="col">Criado em</th>
+    <th scope="col">Tempo para completar</th>
+    <th scope="col">Recompromisso</th>
 
   </tr>
   </thead>
@@ -20,16 +21,21 @@
       <th scope="row"><%= cicle.id %></th>
       <th scope="row"><%= cicle.phase %></th>
       <td><%= cicle.order.value %></td>
-      <td><%= cicle.status %></td>
-      <td><%= cicle.created_at %></td>
+      <td><%= set_status(cicle.status) %></td>
+      <td><%= cicle.created_at.strftime('%d/%m/%Y %H:%M:%S') %></td>
       <td class="getting-started<%= cicle.id %>" >
         <script>
-            $(".getting-started<%= cicle.id %>").countdown("<%= cicle.complete_date.strftime('%d/%m/%Y %H:%M:%S') %>", function(e){
-                $(this).text(
-                    e.strftime('%d dias e %H:%M:%S horas')
-                );
-            });
+          $(".getting-started<%= cicle.id %>").countdown("<%= cicle.complete_date.strftime('%d/%m/%Y %H:%M:%S') %>", function(e){
+            $(this).text(
+                e.strftime('%d dias e %H:%M:%S horas')
+            );
+          });
         </script>
+      </td>
+      <td>
+        <% if cicle.hold? %>
+          <%= link_to '<i class="material-icons">autorenew</i>'.html_safe, panel_cicles_renew_path(cicle_id: cicle.id), data: { confirm: 'Tem certeza que deseja realizar o recompromisso?' }  %>
+        <% end %>
       </td>
     </tr>
   <% end %>
