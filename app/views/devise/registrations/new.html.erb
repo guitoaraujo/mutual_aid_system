@@ -3,6 +3,11 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
+    <%= f.label 'Patrocinador' %><br />
+    <%= f.select :user_id, User.all.map { |user| ["#{user.name} | #{user.mibank}", user.id] }, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
