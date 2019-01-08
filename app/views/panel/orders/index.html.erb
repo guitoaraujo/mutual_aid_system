@@ -33,7 +33,7 @@
       <% if order.withdraws.any? %>
         <td><%= order.withdraws.first.user.mibank %></td>
       <% else %>
-        <td>waiting favoured</td>
+        <td>Aguardando favorecido</td>
       <% end %>
       <td><%= render('shared/validate_order_form', order_id: order.id, favoured: order.withdraws.first) if order.pending?  %></td>
       <td>

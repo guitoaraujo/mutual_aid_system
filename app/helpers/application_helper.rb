@@ -6,7 +6,7 @@ module ApplicationHelper
 	def set_status(status)
 		case status
 			when 'pending'
-				"caralho"
+				"Pendente"
 			when 'approved'
 				"Aprovado"
 			when 'hold'
