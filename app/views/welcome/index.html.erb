@@ -3,10 +3,46 @@
 <% end %>
 
 <div class="jumbotron mt-3 shadow-lg">
-  <h1 class="display-4">Sistema de Ajuda Mútua</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 class="display-4">HOME CASH</h1>
+  <p class="lead">A HOME CASH é uma comunidade de ajuda mutua e investimentos diretos, com
+    doações em reais, não existe conta central, a HOME CASH não intermedeia nenhuma doação, ou seja.
+    As doações são de usuário para usuário, corretamente administrada e totalmente
+    autossustentável, além de ter um suporte de um sistema de ponta. Com o foco em
+    oportunidades para todos aqueles que fazem parte desta comunidade. Pensando assim a
+    comunidade tem uma filosofia de ajuda ao próximo.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>
+    Como Funciona Home Cash
+    A comunidade funciona da seguinte maneira, você ajuda um membro da comunidade com
+    valores dentro das margens definidas pelo sistema, e essa sua ajuda gera uma ordem,
+    essa ordem vai permitir alguns saques de porcentagens do valor investido durante um
+    período de 7 em 7 dias até completar um total de 8 semanas (56 dias).
+    Essas porcentagens são liberadas por um relógio contador, onde você pode acompanhar
+    seu retorno de até 50% do valor raiz em um total de 56 dias.
+  </p>
+  <p>
+    Exemplo:
+    Doação de R$120,00 retorno de 30,00 por semana, total de 8 semanas.
+    Sendo desmembrado em:
+    100,00 para o próximo doador, 10,00 para o sistema e 10,00 para o patrocinador.
+    Lembrando que é obrigado o recompromisso semanal no valor investido para que haja o
+    saque.
+  </p>
+  <p>
+    O usuário que não cumprir sua doação em ate 24horas será bloqueado por 7 dias sem
+    rendimentos da sua ordem, caso não cumpra novamente, será bloqueado por 30 dias e na
+    terceira vês terá a conta cancelada definitivamente.
+    Valores mínimos de 50,00 (Cinquenta reais) e máximo de 5.000,00 (Cinco mil reais)
+    Máximo de 3 (Três) ordens por CPF.
+    Para a sustentabilidade do sistema será feito obrigatoriamente para o saque da semana
+    subsequente o recompromisso no valor exato da primeira semana.
+    A Home Cash surgiu de um desejo muito grande de um sistema transparente porem eficaz
+    e que ajudasse a todos os usuários. Ao longo dos anos analisando as dificuldades e
+    maiores necessidades de um sistema de ajuda mutua e assim foi criando a Home Cash.
+    Foi pensando nos usuários e ajudar a todos que após muito tempo de estudo o projeto foi
+    construído e posto em pratica de forma transparente e autossustentável, tendo a visão de
+    além de ajuda mutua a auto sustentabilidade.
+  </p>
   <% if !user_signed_in? %>
     <%= link_to 'Entrar', new_user_session_path, class: 'btn btn-lg btn-primary my-2 my-sm-0' %>
     <%= link_to 'Cadastro', new_user_registration_path, class: 'btn btn-lg btn-primary my-2 my-sm-0' %>

@@ -10,11 +10,9 @@ Rails.application.routes.draw do
 	  
     post 'validation', to: 'orders#validate_order', as: 'validation'
   end
-  
-  
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 	
+  get 'welcome/faq'
 	root 'welcome#index'
 end

@@ -39,7 +39,7 @@
 
         <div class="col">
           <%= f.label 'CPF' %><br />
-          <%= f.text_field :cpf, autocomplete: "cpf", disable: true, class: 'form-control', 'data-mask': '999.999.999.-99' %>
+          <%= f.text_field :cpf, autocomplete: "cpf", disabled: true, class: 'form-control', 'data-mask': '999.999.999-99' %>
         </div>
       </div>
     </div>
@@ -48,7 +48,8 @@
       <div class="form-row">
         <div class="col">
           <%= f.label 'País' %><br />
-          <%= f.country_select :country, {}, class: 'form-control' %>
+          <%= f.country_select :country, {}, disabled: true, class: 'form-control' %>
+          <%#= f.text_field :country, disabled: true, class: 'form-control' %>
         </div>
 
         <div class="col">
