@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'cicles/renew'
     resources :orders,    only: [:index, :new, :create, :destroy]
     resources :withdraws, only: [:index, :new, :create, :destroy]
-    resources :users,     only: [:index, :create]
+    resources :users,     only: [:new, :create]
 	  
     post 'validation', to: 'orders#validate_order', as: 'validation'
   end

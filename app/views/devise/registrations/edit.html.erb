@@ -71,7 +71,7 @@
     <div class="form-group">
       <div class="form-row">
         <div class="col">
-          <%= f.label :password %> <br />
+          <%= f.label 'Senha' %> <br />
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "mínimo de #{@minimum_password_length} caractéres", class: 'form-control' %>
           <small>Deixe em branco se não quiser mudar</small>
           <% if @minimum_password_length %>
@@ -79,14 +79,14 @@
           <% end %>
         </div>
         <div class="col">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label 'Confirmação de Senha' %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :current_password %> <br />
+      <%= f.label 'Senha Atual' %> <br />
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
       <small>Confirme sua senha atual para validação</small>
     </div>

@@ -40,6 +40,10 @@
         <li class="nav-item">
           <span class="nav-link"><i class="material-icons">attach_money</i> <strong>R$ <%= current_user.wallet %></strong></span>
         </li>
+
+        <li class="nav-item">
+          <span class="nav-link"><i class="material-icons">link</i> <strong><%= "#{new_panel_user_url}?uid=#{current_user.id}" %></strong></span>
+        </li>
       </ul>
       <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light ml-5 my-2 my-sm-0' %>
 

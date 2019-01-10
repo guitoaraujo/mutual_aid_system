@@ -1,22 +1,26 @@
 class Panel::UsersController < ApplicationController
+	skip_before_action :authenticate_user!
 	
-	def index
-		@users = User.where(user: current_user)
-		@user  = User.new
+	def new
+		if params[:uid]
+			@sponsor  = User.find(params[:uid])
+		end
+		@user       = User.new
 	end
 	
 	def create
+		binding.pry
 		@user  = User.new(users_params)
 		if @user.save
-			redirect_to panel_users_path notice: 'Cadastro realizado com sucesso.'
+			redirect_to new_user_session_path notice: 'Cadastro realizado com sucesso, realize o login!'
 		else
-			render :index, notice: 'Erro ao cadastro, verifique os dados e tenta novamente.'
+			render :new, notice: 'Erro ao cadastro, verifique os dados e tenta novamente.'
 		end
 	end
 	
 	private
 	
 	def users_params
-		params.require(:user).permit(:name, :cpf, :phone, :email, :mibank, :country, :zipcode, :password, :password_confirmation)
+		params.require(:user).permit(:user_id, :name, :cpf, :phone, :email, :mibank, :country, :zipcode, :password, :password_confirmation)
 	end
 end
